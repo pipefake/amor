@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Feliz San Valentine's Day</title>
+    <link rel="stylesheet" type="text/css" href="index.css"> <!-- Enlazar tu archivo CSS -->
+    <style>
+        body {
+            background-image: url('sky.jpg');
+            /* Ruta a tu imagen de cielo con nubes */
+            background-size: cover;
+            /* Cubrir todo el área del body */
+            background-repeat: no-repeat;
+            /* Evitar que la imagen se repita */
+            background-position: center center;
+            /* Centrar la imagen */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+            /* Evitar el desbordamiento de la pantalla */
+            font-family: Arial, sans-serif;
+            /* Fuente legible */
+        }
+
+        .girasol {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            animation: spin 4s infinite linear;
+        }
+
+        @keyframes spin {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .popup {
+            position: absolute;
+            background-color: rgba(255, 255, 255, 0.9);
+            /* Fondo semi-transparente */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            /* Sombra */
+            font-size: 20px;
+            cursor: pointer;
+            /* Cambiar cursor a mano */
+            display: none;
+            /* Inicialmente oculto */
+        }
+
+        .question-button {
+            border: none;
+            background-color: #f06292;
+            /* Color de fondo */
+            color: white;
+            /* Color del texto */
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 5px;
+            display: block;
+            /* Hacer visible */
+        }
+    </style>
+</head>
+
+<body>
+    <button id="showButton" onclick="showGift()">Mostrar Regalo</button>
+
+    <script>
+        let currentQuestionIndex = 0; // Índice de la pregunta actual
+
+        function showGift() {
+            document.getElementById('showButton').style.display = 'none'; // Ocultar el botón
+
+            // Crear y añadir más girasoles a la pantalla
+            for (let i = 0; i < 50; i++) { // Ajuste: 20 girasoles en lugar de 10
+                createGirasol();
+            }
+
+            // Mostrar mensaje de feliz San Valentín
+            showHappyValentinesMessage();
+
+            // Mostrar la primera pregunta
+            const firstQuestion = document.querySelector('.popup');
+            firstQuestion.style.display = 'block';
+        }
+
+        function createGirasol() {
+            const girasol = document.createElement('img');
+            girasol.className = 'girasol';
+            girasol.src = 'girasol.png'; // Asegúrate de que la imagen esté en la ruta correcta
+            girasol.style.left = Math.random() * window.innerWidth + 'px'; // Corrección aquí
+            girasol.style.top = Math.random() * window.innerHeight + 'px'; // Corrección aquí
+
+            document.body.appendChild(girasol);
+        }
+
+        function askQuestion(question, x, y) {
+            const popup = document.createElement('button');
+            popup.className = 'popup question-button';
+            popup.style.left = x + 'px';
+            popup.style.top = y + 'px';
+            popup.textContent = question;
+            popup.onclick = function () {
+                popup.style.display = 'none'; // Ocultar la pregunta actual
+                showNextQuestion(); // Mostrar la siguiente pregunta
+            };
+
+            document.body.appendChild(popup);
+        }
+
+        function showHappyValentinesMessage() {
+            const happyValentinesMessage = document.createElement('div');
+            happyValentinesMessage.textContent = "Happy San Valentine's Day";
+            happyValentinesMessage.style.position = 'absolute';
+            happyValentinesMessage.style.top = '50%';
+            happyValentinesMessage.style.left = '50%';
+            happyValentinesMessage.style.transform = 'translate(-50%, -50%)';
+            happyValentinesMessage.style.fontSize = '24px';
+            happyValentinesMessage.style.color = 'white';
+            happyValentinesMessage.style.textAlign = 'center';
+            happyValentinesMessage.className = 'texto-con-contorno';
+
+            document.body.appendChild(happyValentinesMessage);
+        }
+
+    </script>
+</body>
+
+</html>

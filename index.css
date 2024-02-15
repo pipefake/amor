@@ -1,0 +1,30 @@
+body {
+    font-family: 'Moonchild', sans-serif; /* Aplicar Moonchild como la fuente predeterminada */
+    background-color: aquamarine;
+    background-image: url('sky.jpg'); /* Ruta a tu imagen de cielo con nubes */
+    background-size: cover; /* Cubrir todo el área del body */
+    background-repeat: no-repeat; /* Evitar que la imagen se repita */
+    background-position: center center; /* Centrar la imagen */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden; /* Evitar el desbordamiento de la pantalla */
+}
+
+
+p, h1, h2, h3, h4, button {
+    font-family: 'Moonchild', sans-serif; /* Aplicar Moonchild a todas las etiquetas de párrafo y encabezado */
+}
+
+.texto-con-contorno {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 44px;
+    color: red;
+    text-align: center;
+    font-weight: bolder;
+}
